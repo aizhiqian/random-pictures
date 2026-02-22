@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>随机图 | API</title>
+        <link rel="icon" href="/favicon.ico">
+        <style>
+            html,
+            body {
+                margin: 0;
+                color: #424242;
+                font-weight: 300;
+                font-family: "-apple-system", "BlinkMacSystemFont",
+                    "Helvetica Neue", "PingFang SC", "Microsoft YaHei",
+                    "Source Han Sans SC", "Noto Sans CJK SC",
+                    "WenQuanYi Micro Hei", "sans-serif";
+                font-size: 16px;
+            }
+
+            * {
+                box-sizing: border-box;
+            }
+
+            header {
+                padding: 40vh 0 8vh 0;
+                text-align: center;
+                font-weight: 100;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                height: 100vh;
+                overflow: hidden;
+                background: #a0e5e4;
+            }
+
+            h1,
+            h2,
+            h3 {
+                font-weight: 400 !important;
+                font-weight: bold;
+                margin: 0;
+            }
+
+            h1 {
+                font-size: 3.5rem;
+                padding: 20px;
+            }
+
+            h2 {
+                font-size: 2rem;
+                font-weight: 300;
+                text-align: center;
+            }
+
+            h3 {
+                font-size: 1.5rem;
+                font-weight: 300;
+            }
+
+            #scroll-down {
+                background-color: transparent;
+                margin-top: 2rem;
+                width: 2rem;
+                height: 2rem;
+                border-radius: 50%;
+                border: 2px solid #424242;
+                cursor: pointer;
+                animation: bounce 2s infinite 2s;
+            }
+
+            #scroll-down::before {
+                display: block;
+                content: "";
+                transform: rotate(-45deg) translate(0.15rem, 0.15rem);
+                width: 0.4rem;
+                height: 0.4rem;
+                border: 2px solid #424242;
+                border-width: 0px 0 2px 2px;
+            }
+
+            a {
+                text-decoration: none;
+                color: #5fbf62;
+                font-weight: bold;
+            }
+
+            p {
+                font-size: 18px;
+                line-height: 1.6;
+            }
+
+            main {
+                padding: 1vw;
+            }
+
+            section {
+                padding: 1rem;
+            }
+
+            code {
+                background-color: #f2f2f2;
+                padding: 0.1rem 0.4rem;
+                border-radius: 4px;
+            }
+
+            footer {
+                padding: 1vh;
+                text-align: center;
+                background-color: #aaaaaa;
+            }
+
+            footer a {
+                color: #1e03ea;
+            }
+
+            footer a:hover {
+                text-decoration: underline;
+            }
+
+            @keyframes bounce {
+                0%,
+                100%,
+                20%,
+                50%,
+                80% {
+                    transform: translateY(0);
+                }
+
+                40% {
+                    transform: translateY(-10px);
+                }
+
+                60% {
+                    transform: translateY(-5px);
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <section>
+                <h1>随机图 | API</h1>
+                <h3>使用文档</h3>
+            </section>
+            <button id="scroll-down"></button>
+        </header>
+        <main>
+            <section>
+                <h2>随机图片 API</h2>
+                <p>欢迎使用随机图片 API！你可以通过以下路径获取随机图片：</p>
+                <ul>
+                    <li><strong>/random</strong> - 在所有分类中随机获取一张图片</li>
+                    <li><strong>/&lt;category&gt;</strong> - 在指定分类中随机获取一张图片</li>
+                    <li><strong>/health</strong> - 健康检查（返回 200）</li>
+                </ul>
+
+                <p>
+                    分类由 <code>api/*.txt</code> 自动决定，文件名即分类名：
+                    <code>api/&lt;category&gt;.txt</code> → <code>/&lt;category&gt;</code>
+                </p>
+
+                <p>示例：</p>
+                <ul>
+                    <li><a href="/random" target="_blank">/random</a></li>
+                    <li><code>/&lt;category&gt;</code></li>
+                    <li><a href="/health" target="_blank">/health</a></li>
+                </ul>
+            </section>
+        </main>
+        <script>
+            document
+                .getElementById("scroll-down")
+                .addEventListener("click", function () {
+                    document.querySelector("main").scrollIntoView({
+                        behavior: "smooth",
+                    });
+                });
+        </script>
+        <footer>
+            <p>
+                <a href="https://github.com/aizhiqian/random-pictures">Github</a>
+            </p>
+        </footer>
+    </body>
+</html>

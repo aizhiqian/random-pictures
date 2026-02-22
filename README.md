@@ -9,69 +9,39 @@
 
 先 `Fork` 本项目，再登录 [Vercel](https://vercel.com/) 网站新建项目。
 
+## 开发
+
+- 安装依赖：`npm install`
+- 本地开发：`npm run dev`
+- 运行测试：`npm test`
+- 按文件运行测试：`node --test randomImage.test.js`
+- 按测试名过滤：`node --test --test-name-pattern "health" randomImage.test.js`
+
 ## 使用方法
 
-在 `api` 目录下创建 `meinv.txt` 和 `dongman.txt` 文件，并在每个文件中添加图片链接，每行一个链接。例如：
+在 `api` 目录下创建 `*.txt` 文件作为分类（例如 `meinv.txt`、`dongman.txt`、`nature.txt`），每行一个图片链接。
 
-> 当然你也可以自己创建新分类，只要文件后缀为`.txt`就行
+> 分类名由文件名自动决定：`api/<category>.txt` 对应路由 `/<category>`。
 
-**meinv.txt**：
-
-```bash
-https://example.com/meinv1.jpg
-https://example.com/meinv2.jpg
-```
-
-**dongman.txt**：
+示例：
 
 ```bash
-https://example.com/dongman1.jpg
-https://example.com/dongman2.jpg
+https://example.com/image-1.jpg
+https://example.com/image-2.jpg
 ```
 
 ## 路由
 
-- `https://your-domain.vercel.app/` 显示项目的主页说明文档
-- `https://your-domain.vercel.app/random` 获取所有 `.txt` 文件中的随机图片
-- `https://your-domain.vercel.app/meinv` 获取 “meinv.txt” 文件中的随机图片
-- `https://your-domain.vercel.app/dongman` 获取 “dongman.txt” 文件中的随机图片
-- `https://your-domain.vercel.app/新分类` 获取 “新分类.txt” 文件中的随机图片
+- `https://your-domain.vercel.app/` 显示项目主页说明
+- `https://your-domain.vercel.app/health` 健康检查（返回 200）
+- `https://your-domain.vercel.app/random` 在所有分类中随机返回一张图片
+- `https://your-domain.vercel.app/<category>` 在指定分类中随机返回一张图片（如 `/meinv`、`/dongman`）
 
-## 提示
+## 说明
 
-主页说明文档中的新分类和链接自行修改，文件路径为 `./public/index.html`
-
-主要就是修改下面的
-
-```html
-            <section>
-                <h2>随机图片 API</h2>
-                <p>欢迎使用随机图片 API！你可以通过以下路径获取随机图片：</p>
-                <ul>
-                    <li><strong>/random</strong> - 随机获取 <a>一张</a> 图片</li>
-                    <li><strong>/meinv</strong> - 随机获取 <a>美女</a> 图片</li>
-                    <li><strong>/dongman</strong> - 随机获取 <a>动漫</a> 图片</li>
-                </ul>
-                <p>示例：</p>
-                <ul>
-                    <li>
-                        <a href="/random" target="_blank"
-                            >https://random-pictures-iota.vercel.app/random</a
-                        >
-                    </li>
-                    <li>
-                        <a href="/meinv" target="_blank"
-                            >https://random-pictures-iota.vercel.app/meinv</a
-                        >
-                    </li>
-                    <li>
-                        <a href="/dongman" target="_blank"
-                            >https://random-pictures-iota.vercel.app/dongman</a
-                        >
-                    </li>
-                </ul>
-            </section>
-```
+- `/random` 会忽略无效分类文件（空文件、无有效 URL、读取失败的分类），只要存在可用分类就会正常返回。
+- 图片链接仅接受 `http/https` 协议，其他协议会被过滤。
+- 分类名仅允许字母、数字、下划线和中划线（`[a-zA-Z0-9_-]`）。
 
 ## 许可证
 

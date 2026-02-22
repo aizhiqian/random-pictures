@@ -2,8 +2,15 @@
   "name": "random-image-api",
   "version": "1.0.0",
   "main": "api/randomImage.js",
+  "scripts": {
+    "dev": "npx vercel dev",
+    "test": "node --test"
+  },
   "dependencies": {
-    "express": "^4.19.2",
-    "cors": "^2.8.5"
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "supertest": "^7.1.1"
   }
 }
