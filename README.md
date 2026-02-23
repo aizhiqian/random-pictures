@@ -39,6 +39,8 @@ https://example.com/image-2.jpg
 
 ## 说明
 
+- 唯一服务入口为 `api/randomImage.js`。
+- 首页说明页面来自 `public/index.html`。
 - `/random` 会忽略无效分类文件（空文件、无有效 URL、读取失败的分类），只要存在可用分类就会正常返回。
 - 图片链接仅接受 `http/https` 协议，其他协议会被过滤。
 - 分类名仅允许字母、数字、下划线和中划线（`[a-zA-Z0-9_-]`）。
